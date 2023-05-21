@@ -12,11 +12,17 @@
       cursor: pointer;
     }
   </style>
+  <script>
+    function redirectToConfirmation() {
+      window.location.replace("LoanSubmitted.html");
+      return false; // Prevent form submission
+    }
+  </script>
 </head>
 <body>
   <h1>Loan Application</h1>
 
-  <form action="/submit_loan_application" method="post">
+  <form action="/submit_loan_application" method="post" onsubmit="return redirectToConfirmation()">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
 
