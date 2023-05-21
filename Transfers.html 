@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Transfer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      width: 400px;
+      margin: 0 auto;
+    }
+    
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    input[type="text"], select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .btn-done {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Online Transfer</h2>
+    <form>
+      <label for="from">From:</label>
+      <input type="text" id="from" placeholder="Your account number">
+
+      <label for="to">To:</label>
+      <input type="text" id="to" placeholder="Recipient's account number">
+
+      <label for="amount">Amount:</label>
+      <input type="text" id="amount" placeholder="Amount in EGP">
+
+      <label for="type">Type:</label>
+      <select id="type" onchange="showSwiftField()">
+        <option value="internal">Internal</option>
+        <option value="domestic">Domestic</option>
+        <option value="international">International</option>
+      </select>
+
+      <label for="swift" id="swiftLabel" class="hidden">Swift:</label>
+      <input type="text" id="swift" class="hidden" placeholder="Swift Code">
+
+    </form>
+    
+    <button class="btn-done" onclick="submitForm()">Done</button>
+  </div>
+
+  <script>
+    function showSwiftField() {
+      var type = document.getElementById("type").value;
+      var swiftLabel = document.getElementById("swiftLabel");
+      var swiftField = document.getElementById("swift");
+
+      if (type === "international") {
+        swiftLabel.classList.remove("hidden");
+        swiftField.classList.remove("hidden");
+      } else {
+        swiftLabel.classList.add("hidden");
+        swiftField.classList.add("hidden");
+      }
+    }
+
+    function submitForm() {
+      // You can add code here to process the form data or perform other actions
+      alert('Transfer successful!'); // Example alert for demonstration purposes
+    }
+  </script>
+</body>
+</html>
