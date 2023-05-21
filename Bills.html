@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pay Bills</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      width: 400px;
+      margin: 0 auto;
+    }
+    
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    select, input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .btn-pay {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pay Bills</h2>
+    <form>
+      <label for="bill-type">Bill Type:</label>
+      <select id="bill-type">
+        <option value="gas">Gas</option>
+        <option value="water">Water</option>
+        <option value="electricity">Electricity</option>
+        <option value="telephone">Telephone</option>
+      </select>
+
+      <label for="bill-number">Bill Number:</label>
+      <input type="text" id="bill-number" placeholder="Enter Bill Number">
+
+      <label for="through">Through:</label>
+      <select id="through">
+        <option value="bank">Bank</option>
+        <option value="orange">Orange</option>
+        <option value="vodafone">Vodafone</option>
+        <option value="etisalat">Etisalat</option>
+        <option value="fawary">Fawary</option>
+      </select>
+    </form>
+    
+    <button class="btn-pay" onclick="payBill()">Pay</button>
+  </div>
+
+  <script>
+    function payBill() {
+      // You can add code here to process the bill payment or perform other actions
+      alert('Bill payment successful!'); // Example alert for demonstration purposes
+    }
+  </script>
+</body>
+</html>
