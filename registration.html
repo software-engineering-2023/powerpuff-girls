@@ -30,8 +30,9 @@
       font-weight: bold;
     }
     .form-group input[type="text"],
-    .form-group input[type="password"],
     .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group input[type="email"],
     .form-group select {
       width: 100%;
       padding: 10px;
@@ -40,7 +41,6 @@
       box-sizing: border-box;
       font-size: 16px;
     }
-
     .form-group button {
       width: 100%;
       padding: 12px;
@@ -59,20 +59,36 @@
     .form-group button:active {
       background-color: #3e8940;
     }
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
   </style>
   <script>
     function register() {
       // Get the input values
       var fullName = document.getElementById("fullName").value;
       var dateOfBirth = document.getElementById("dateOfBirth").value;
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      var accountType = document.getElementById("accountType").value;
+      var nationalID = document.getElementById("nationalID").value;
       var address = document.getElementById("address").value;
       var phoneNumber = document.getElementById("phoneNumber").value;
       var email = document.getElementById("email").value;
 
-      // Perform validation and registration process here
+      // Validate fields
+      var errorMessage = document.getElementById("error-message");
+      errorMessage.innerHTML = "";
+
+      if (fullName.trim() === "" || dateOfBirth.trim() === "" || nationalID.trim() === "" || address.trim() === "" || phoneNumber.trim() === "" || email.trim() === "") {
+        errorMessage.innerHTML = "Please fill in all fields.";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        errorMessage.innerHTML = "Please enter a valid email address.";
+        return;
+      }
+
+      // Perform registration process here
 
       // Redirect to the login page
       window.location.href = "login.html";
@@ -92,21 +108,8 @@
         <input type="date" id="dateOfBirth" name="dateOfBirth" required>
       </div>
       <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Choose a username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Choose a password" required>
-      </div>
-      <div class="form-group">
-        <label for="accountType">Account Type:</label>
-        <select id="accountType" name="accountType" required>
-          <option value="">Select Account Type</option>
-          <option value="savings">Savings Account</option>
-          <option value="current">Current Account</option>
-          <option value="credit">Credit Card</option>
-        </select>
+        <label for="nationalID">National ID:</label>
+        <input type="number" id="nationalID" name="nationalID" placeholder="Enter your national ID" required>
       </div>
       <div class="form-group">
         <label for="address">Address:</label>
@@ -118,11 +121,12 @@
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <textarea id="email" name="email" placeholder="Enter your email address" rows="2" required></textarea>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
       </div>
       <div class="form-group">
         <button type="button" onclick="register()">Register</button>
       </div>
+      <div class="error-message" id="error-message"></div>
     </form>
   </div>
 </body>
