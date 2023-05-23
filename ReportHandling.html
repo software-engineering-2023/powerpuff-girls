@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client Reports</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      color: #008000;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #dddddd;
+    }
+    
+    th {
+      background-color: #008000;
+      color: #ffffff;
+    }
+    
+    .button {
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    
+    .text-field {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Client Reports</h1>
+  
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Account Number</th>
+      <th>Mobile Number</th>
+      <th>Report Type</th>
+    </tr>
+    <tr>
+      <td>John Doe</td>
+      <td>1234567890</td>
+      <td>555-1234</td>
+      <td>Damage</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>0987654321</td>
+      <td>555-5678</td>
+      <td>Theft</td>
+    </tr>
+    <!-- Add more client reports as needed -->
+  </table>
+  
+  <div id="notifications">
+    <h2>Send Notification</h2>
+    <input id="message" class="text-field" type="text" placeholder="Enter notification message">
+    <button class="button" onclick="sendNotification()">Send</button>
+  </div>
+
+  <script>
+    function sendNotification() {
+      var messageInput = document.getElementById("message");
+      var message = messageInput.value;
+
+      // Code to send the notification goes here
+      // You can use AJAX or any other method to send the notification
+      
+      alert('Notification sent: ' + message);
+      
+      // Clear the input field
+      messageInput.value = "";
+    }
+  </script>
+</body>
+</html>
