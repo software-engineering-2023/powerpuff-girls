@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Card Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      color: #2ecc71;
+      text-align: center;
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    .credit-card {
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .credit-card p {
+      margin: 0;
+    }
+    
+    .payment-options {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .payment-options button {
+      background-color: #2ecc71;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .payment-options button:hover {
+      opacity: 0.8;
+    }
+    
+    .report-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .report-link a {
+      color: #2ecc71;
+    }
+    
+    .home-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #2ecc71;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .home-button:hover {
+      opacity: 0.8;
+    }
+  </style>
+  <script>
+    function redirectToReportPage() {
+      window.location.href = "report page.html";
+    }
+
+    function redirectToPayBillPage() {
+      window.location.href = "paycreditcardbills.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <a class="home-button" href="mainpage.html">Home</a>
+    <h1>Credit Card Details</h1>
+    <div class="credit-card">
+      <p>Cardholder Name: John Doe</p>
+      <p>Card Number: **** **** **** 1234</p>
+      <p>Expiration Date: 06/25</p>
+    </div>
+    <div class="payment-options">
+      <button onclick="redirectToPayBillPage()">Pay Bills</button>
+      <button onclick="redirectToReportPage()">File a Report</button>
+    </div>
+    <div class="report-link">
+      <a href="#">Need help? Contact customer support</a>
+    </div>
+  </div>
+</body>
+</html>

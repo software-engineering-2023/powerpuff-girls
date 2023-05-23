@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pay Credit Card Bill</title>
+  <style>
+    body {
+      background-color: #f0f8ea;
+      font-family: Arial, sans-serif;
+    }
+  
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+  
+    h1 {
+      color: #008000;
+      text-align: center;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+  
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+  
+    .text-input {
+      display: none;
+      margin-top: 5px;
+    }
+  
+    .submit-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+  
+    .message {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #008000;
+    }
+  
+    .home-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #008000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="mainpage.html" class="home-button">Home</a>
+    <h1>Pay Credit Card Bill</h1>
+    <form>
+      <label>
+        <input type="radio" name="payment" value="fully" onclick="toggleTextbox(false)" checked> Pay in Full
+      </label>
+      <label>
+        <input type="radio" name="payment" value="partially" onclick="toggleTextbox(true)"> Pay Partially
+      </label>
+      <input type="text" class="text-input" placeholder="Enter partial amount" />
+      <div class="submit-button">
+        <input type="button" value="Submit" onclick="showMessage()">
+      </div>
+    </form>
+    <p class="message" id="message"></p>
+  </div>
+
+  <script>
+    function toggleTextbox(show) {
+      var textbox = document.querySelector('.text-input');
+      textbox.style.display = show ? 'block' : 'none';
+    }
+
+    function showMessage() {
+      var paymentOption = document.querySelector('input[name="payment"]:checked').value;
+      var amountInput = document.querySelector('.text-input');
+      var amount = amountInput.value;
+
+      var message = document.getElementById('message');
+      if (paymentOption === "fully") {
+        message.textContent = "Payment of the full amount has been submitted.";
+      } else if (paymentOption === "partially") {
+        if (amount === "") {
+          message.textContent = "Please enter the partial amount.";
+        } else {
+          message.textContent = "Payment of $" + amount + " has been submitted.";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
