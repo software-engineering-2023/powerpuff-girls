@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Report Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #006600;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #006600;
+      font-weight: bold;
+    }
+    select,
+    input[type="radio"],
+    input[type="submit"],
+    .home-button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    select {
+      margin-bottom: 20px;
+    }
+    input[type="submit"] {
+      background-color: #006600;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #004400;
+    }
+    .message {
+      color: #006600;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .home-button {
+      background-color: #006600;
+      color: #ffffff;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .home-button:hover {
+      background-color: #004400;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="home-button" href="mainpage.html">Home</a>
+    <h1>Report Page</h1>
+    <form id="reportForm">
+      <label for="issue">Select an issue:</label>
+      <select id="issue" name="issue">
+        <option value="">Please select an issue</option>
+        <option value="creditCardTheft">Credit Card Theft</option>
+        <option value="creditCardDamage">Credit Card Damage</option>
+        <option value="creditCardLoss">Credit Card Loss</option>
+      </select>
+
+      <label for="replacement">Apply for Replacement:</label>
+      <input type="radio" id="replacement" name="replacement" value="yes">
+      <label for="replacement">Yes</label>
+      <input type="radio" id="replacement" name="replacement" value="no">
+      <label for="replacement">No</label>
+
+      <input type="submit" value="Submit">
+    </form>
+    <p class="message" id="submissionMessage"></p>
+  </div>
+
+  <script>
+    document.getElementById('reportForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var issue = document.getElementById('issue').value;
+      var replacement = document.querySelector('input[name="replacement"]:checked');
+      if (issue === '') {
+        document.getElementById('submissionMessage').textContent = "Please select an issue before submitting.";
+      } else if (replacement === null) {
+        document.getElementById('submissionMessage').textContent = "Please select an option for replacement before submitting.";
+      } else {
+        var message = "Your report has been submitted. Someone will reach out to you shortly.";
+        document.getElementById('submissionMessage').textContent = message + " Issue: " + issue;
+      }
+    });
+  </script>
+</body>
+</html>
