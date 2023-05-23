@@ -90,8 +90,19 @@
 
   <script>
     function payBill() {
+      var billNumberInput = document.getElementById("bill-number");
+      var billNumber = billNumberInput.value.trim();
+
+      if (billNumber === "") {
+        alert("Please enter the bill number.");
+        return;
+      }
+
       // You can add code here to process the bill payment or perform other actions
-      alert('Bill payment successful!'); // Example alert for demonstration purposes
+      alert("Bill payment successful! Bill Number: " + billNumber); // Example alert for demonstration purposes
+
+      // Clear the input field
+      billNumberInput.value = "";
     }
 
     function redirectToHome() {

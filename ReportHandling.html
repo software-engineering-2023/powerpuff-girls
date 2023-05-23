@@ -7,7 +7,7 @@
       background-color: #ffffff;
       color: #000000;
       font-family: Arial, sans-serif;
-      margin: 0;
+      margin: 20px;
       padding: 0;
     }
     
@@ -96,7 +96,7 @@
   
   <div id="notifications">
     <h2>Send Notification</h2>
-    <input id="message" class="text-field" type="text" placeholder="Enter notification message">
+    <input id="message" class="text-field" type="text" placeholder="Enter account number">
     <button class="button" onclick="sendNotification()">Send</button>
   </div>
   
@@ -105,7 +105,12 @@
   <script>
     function sendNotification() {
       var messageInput = document.getElementById("message");
-      var message = messageInput.value;
+      var message = messageInput.value.trim();
+
+      if (message === "") {
+        alert("Please enter the account number.");
+        return;
+      }
 
       // Code to send the notification goes here
       // You can use AJAX or any other method to send the notification

@@ -107,12 +107,30 @@
     }
 
     function submitForm() {
+      var fromInput = document.getElementById("from");
+      var toInput = document.getElementById("to");
+      var amountInput = document.getElementById("amount");
+
+      var from = fromInput.value.trim();
+      var to = toInput.value.trim();
+      var amount = amountInput.value.trim();
+
+      if (from === "" || to === "" || amount === "") {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
       // You can add code here to process the form data or perform other actions
-      alert('Transfer successful!'); // Example alert for demonstration purposes
+      alert("Transfer successful!\nFrom: " + from + "\nTo: " + to + "\nAmount: " + amount); // Example alert for demonstration purposes
+
+      // Clear the input fields
+      fromInput.value = "";
+      toInput.value = "";
+      amountInput.value = "";
     }
 
     function redirectToHome() {
-      window.location.href = "Home.html";
+      window.location.href = "mainpage.html";
     }
   </script>
 </body>
