@@ -3,7 +3,6 @@
 <head>
   <title>Online Banking - Registration</title>
   <style>
-    /* CSS styles for the registration page */
     body {
       background-color: #f2f2f2;
       font-family: Arial, sans-serif;
@@ -74,7 +73,6 @@
       var phoneNumber = document.getElementById("phoneNumber").value;
       var email = document.getElementById("email").value;
 
-      // Validate fields
       var errorMessage = document.getElementById("error-message");
       errorMessage.innerHTML = "";
 
@@ -88,9 +86,8 @@
         return;
       }
 
-      // Perform registration process here
-
-      // Redirect to the login page
+      alert("Your registration was successful!");
+  
       window.location.href = "login.html";
     }
   </script>
