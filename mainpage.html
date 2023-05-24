@@ -1,108 +1,189 @@
-!DOCTYPE html>
- <html>
- <head>
-   <title>Banking Home Page</title>
-   <style>
-     body {
-       font-family: Arial, sans-serif;
-       background-color: #f1f1f1;
-     }
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking Home Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
 
-     header {
-       background-color: #4CAF50;
-       padding: 20px;
-       text-align: center;
-       color: #fff;
-     }
+    header {
+      background-color: #4CAF50;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
 
-     nav {
-       background-color: #2E7D32;
-       color: #fff;
-       padding: 10px;
-       text-align: center;
-     }
+    nav {
+      background-color: #2E7D32;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
 
-     nav a {
-       color: #fff;
-       text-decoration: none;
-       margin: 10px;
-     }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 10px;
+      transition: color 0.3s ease-in-out;
+    }
 
-     main {
-       padding: 20px;
-       text-align: center;
-     }
+    nav a:hover {
+      color: #e1e1e1;
+    }
 
-     h1 {
-       margin-top: 0;
-     }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
 
-     .balance {
-       font-size: 24px;
-       margin-bottom: 30px;
-       padding: 20px;
-       background-color: #fff;
-       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-     }
+    h1 {
+      margin-top: 0;
+    }
 
-     .notifications {
-       text-align: left;
-       margin-bottom: 30px;
-       padding: 20px;
-       background-color: #fff;
-       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-     }
+    .balance {
+      font-size: 24px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-     .notifications h2 {
-       margin-top: 0;
-       margin-bottom: 10px;
-     }
+    .notifications {
+      text-align: left;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-     .notifications ul {
-       list-style: none;
-       padding: 0;
-       margin: 0;
-     }
+    .notifications h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
 
-     .notifications li {
-       margin-bottom: 10px;
-       padding: 10px;
-       border: 1px solid #e1e1e1;
-       border-radius: 4px;
-     }
-   </style>
- </head>
- <body>
-   <header>
-     <h1>Welcome to HSMS Bank</h1>
-   </header>
+    .notifications ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-   <nav>
-     <a href="account.html">View Account Details</a>
-     <a href="loan.html">Loan</a>
-     <a href="creditcard.html">Credit Card</a>
-     <a href="report.html">Report Issues</a>
-     <a href="transactions.html">Transactions</a>
-     <a href="PayOrSet.html">Bills</a>
-     <a href="Transfers.html">Transfers</a>
-     <a href="points.html">Points</a>
-     <a href="SetReminders.html">Set Reminder</a>
-   </nav>
+    .notifications li {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #e1e1e1;
+      border-radius: 4px;
+    }
 
-   <main>
-     <h1>Home Page</h1>
-     <div class="balance">
-       <h2>Current Balance</h2>
-       <p>$1,000.00</p>
-     </div>
-     <div class="notifications">
-       <h2>Notifications</h2>
-       <ul>
-         <li>New transaction: $50.00 received</li>
-         <li>Upcoming loan payment reminder</li>
-         <li>Important notice regarding credit card statement</li>
-       </ul>
-     </div>
-   </main>
- </body>
- </html>
+    .reminders {
+      text-align: left;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .reminders h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .reminders ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .reminders li {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #e1e1e1;
+      border-radius: 4px;
+    }
+
+    .reminders li.due {
+      background-color: #f1f1f1;
+    }
+    
+    .logout-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .logout-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to HSMS Bank</h1>
+  </header>
+
+  <nav>
+    <a href="account.html">View Account Details</a>
+    <a href="loan.html">Loan</a>
+    <a href="creditcard.html">Credit Card</a>
+    <a href="report.html">Report Issues</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="PayOrSet.html">Bills</a>
+    <a href="Transfers.html">Transfers</a>
+    <a href="points.html">Points</a>
+    <a href="SetReminders.html">Set Reminder</a>
+  </nav>
+
+  <main>
+    <h1>Home Page</h1>
+    <div class="balance">
+      <h2>Current Balance</h2>
+      <p>$1,000.00</p>
+    </div>
+    <div class="notifications">
+      <h2>Notifications</h2>
+      <ul>
+        <li>New transaction: $50.00 received</li>
+        <li>Important notice regarding credit card statement</li>
+      </ul>
+    </div>
+    <div class="reminders">
+      <h2>Reminders</h2>
+      <ul>
+        <li class="due">Loan payment due soon - 2023-06-01</li>
+        <li class="due">Credit card bill payment due soon - 2023-05-30</li>
+        <!-- Utility bill reminders will be dynamically added based on user preferences -->
+      </ul>
+    </div>
+  </main>
+  
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Add event listeners to the navigation links
+      var navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault(); // Prevent the default link behavior
+          var url = link.getAttribute("href");
+          window.location.href = url; // Navigate to the link URL
+        });
+      });
+    });
+  
+    function logout() {
+      alert("You have successfully logged out!");
+      window.location.href = "login.html";
+    }
+  </script>
+  
+</body>
+</html>
