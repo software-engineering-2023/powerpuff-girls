@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Details</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #45a049;
+      text-align: center;
+    }
+
+    .button {
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .close-account-button {
+      margin-top: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Account Details</h1>
+
+    <div class="form-group">
+      <label>Account Number:</label>
+      <span id="accountNumber">1234567890</span>
+    </div>
+
+    <div class="form-group">
+      <label>Name:</label>
+      <span id="userName">John Doe</span>
+    </div>
+
+    <div class="form-group">
+      <label>Account Type:</label>
+      <span id="accountType">Savings</span>
+    </div>
+
+    <!-- Add more account details here -->
+
+    <div class="close-account-button">
+      <button class="button" onclick="confirmCloseAccount()">Close Account</button>
+    </div>
+
+    <a href="mainpage.html" class="home-button">&#8962;</a>
+  </div>
+
+  <script>
+ function confirmCloseAccount() {
+      var confirmation = confirm("Are you sure you want to close your account? This action is irreversible.");
+
+      if (confirmation) {
+        // Random verification code generation
+        var randomVerification = Math.random().toString(36).substring(2, 8);
+
+        var verification = prompt("Please enter the verification code shown below to proceed.\nVerification Code: " + randomVerification);
+
+        if (verification === randomVerification) {
+          window.location.href = "noaccount.html";
+        } else {
+          alert("Invalid verification code. Account closure canceled.");
+        }
+      }
+    }
+  </script>
+</body>
+</html>

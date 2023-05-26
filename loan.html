@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Details</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .outstanding-loans {
+      font-size: 28px;
+      color: #45a049;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .info-label {
+      font-weight: bold;
+    }
+
+    .button {
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1> HSMS - Loan Details</h1>
+      <div class="outstanding-loans">Outstanding Loans: 500,000 L.E</div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Type of Loan:</span>
+      <span>Car Loan</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Remaining Amount:</span>
+      <span>200,000 L.E</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Next Payment:</span>
+      <span>15-06-2023</span>
+    </div>
+
+    <a href="mainpage.html" class="home-button">&#8962;</a>
+
+    <button class="button" onclick="location.href='loanapplication.html'">Apply for Loan</button>
+  </div>
+</body>
+</html>

@@ -3,70 +3,149 @@
 <head>
   <title>Transactions</title>
   <style>
-    table {
-      border-collapse: collapse;
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #45a049;
+      text-align: center;
+    }
+
+    .button {
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"] {
       width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
     th, td {
-      padding: 8px;
+      padding: 10px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #ccc;
     }
-    th {
-      background-color: #f2f2f2;
+
+    .scrollable-table {
+      max-height: 300px;
+      overflow-y: auto;
     }
+
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
-  <h1>Transactions</h1>
-  
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Amount</th>
-    </tr>
-    <tr>
-      <td>2023-05-01</td>
-      <td>Online Purchase</td>
-      <td>$50.00</td>
-    </tr>
-    <tr>
-      <td>2023-05-03</td>
-      <td>Restaurant Payment</td>
-      <td>$30.00</td>
-    </tr>
-    <tr>
-      <td>2023-05-05</td>
-      <td>Grocery Shopping</td>
-      <td>$80.00</td>
-    </tr>
-    <tr>
-        <td>2023-05-02</td>
-        <td>EID MELAD SASO</td>
-        <td>$1000.00</td>
-      </tr>
-      <tr>
-        <td>2023-09-20</td>
-        <td>EID MELAD ZIKO</td>
-        <td>$2500</td>
-      </tr>
-      <tr>
-        <td>2023-11-11</td>
-        <td>EID MELAD HAYOYY</td>
-        <td>$4500</td>
-      </tr>
-      <tr>
-        <td>2023-01-02</td>
-        <td>EID MELAD OZZ</td>
-        <td>$2500</td>
-      </tr>
-      <tr>
-        <td>2023-10-01</td>
-        <td>EID MELAD MOSTAAA EL 7OB </td>
-        <td>$5500</td>
-      </tr>
-    <!-- Add more rows for your transactions -->
-  </table>
+  <div class="container">
+    <h1>Transactions</h1>
+
+    <div class="form-group">
+      <label>Account Number:</label>
+      <span id="accountNumber">1234567890</span>
+    </div>
+
+    <div class="form-group">
+      <label>Name:</label>
+      <span id="userName">John Doe</span>
+    </div>
+
+    <div class="scrollable-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$100</td>
+            <td>Store A</td>
+            <td>2023-05-01</td>
+            <td>Purchase</td>
+          </tr>
+          <tr>
+            <td>$50</td>
+            <td>Store B</td>
+            <td>2023-04-28</td>
+            <td>Payment</td>
+          </tr>
+          <!-- Add more transactions here -->
+        </tbody>
+      </table>
+    </div>
+
+
+    <a href="mainpage.html" class="home-button">&#8962;</a>
+  </div>
+
+  <script>
+    function confirmCloseAccount() {
+      var confirmation = confirm("Are you sure you want to close your account? This action is irreversible.");
+
+      if (confirmation) {
+        var verification = prompt("Please enter the verification code to proceed.");
+
+        if (verification === "1234") { // Replace "1234" with your desired verification code
+          window.location.href = "noaccount.html";
+        } else {
+          alert("Invalid verification code. Account closure canceled.");
+        }
+      }
+    }
+  </script>
 </body>
 </html>

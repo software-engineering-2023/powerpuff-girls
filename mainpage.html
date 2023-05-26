@@ -103,7 +103,7 @@
     }
 
     .reminders li.due {
-      background-color: #f1f1f1;
+      background-color: #fff;
     }
     
     .logout-btn {
@@ -122,6 +122,10 @@
     .logout-btn:hover {
       background-color: #45a049;
     }
+    .credit-card-option {
+      background-color: #2E7D32;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -132,12 +136,12 @@
   <nav>
     <a href="account.html">View Account Details</a>
     <a href="loan.html">Loan</a>
-    <a href="creditcard.html">Credit Card</a>
+    <a href="creditcard.html" class="credit-card-option">Credit Card</a>
     <a href="report.html">Report Issues</a>
     <a href="transactions.html">Transactions</a>
-    <a href="PayOrSet.html">Bills</a>
+    <a href="bills.html">Bills</a>
     <a href="Transfers.html">Transfers</a>
-    <a href="points.html">Points</a>
+    <a href="ViewPoints.html">Points</a>
     <a href="SetReminders.html">Set Reminder</a>
   </nav>
 
@@ -145,20 +149,20 @@
     <h1>Home Page</h1>
     <div class="balance">
       <h2>Current Balance</h2>
-      <p>$1,000.00</p>
+      <p>1,000.00 L.E </p>
     </div>
     <div class="notifications">
       <h2>Notifications</h2>
       <ul>
-        <li>New transaction: $50.00 received</li>
-        <li>Important notice regarding credit card statement</li>
+        <li>New transaction: 50.00 L.E received</li>
+        <li>Important bank wide announcement : automated reminders for loans and credit card bills have been added!</li>
       </ul>
     </div>
     <div class="reminders">
       <h2>Reminders</h2>
       <ul>
-        <li class="due">Loan payment due soon - 2023-06-01</li>
-        <li class="due">Credit card bill payment due soon - 2023-05-30</li>
+        <li class="due">Loan payment due soon - 01-06-2023</li>
+        <li class="due">Credit card bill payment due soon - 30-05-2023</li>
       </ul>
     </div>
   </main>
@@ -172,15 +176,32 @@
         link.addEventListener("click", function(event) {
           event.preventDefault(); 
           var url = link.getAttribute("href");
-          window.location.href = url; 
+          var username = getParameterByName("username");
+
+          if (url === "creditcard.html" && username === "Haya") {
+            window.location.href =url;
+          } else {
+            window.location.href = url;
+          }
         });
       });
     });
+
   
+    function getParameterByName(name) {
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(window.location.href);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    
     function logout() {
       alert("You have successfully logged out!");
       window.location.href = "login.html";
     }
+
   </script>
   
 </body>
