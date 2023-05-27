@@ -43,11 +43,31 @@
     }
 
     .balance {
-      font-size: 24px;
+      position: relative;
       margin-bottom: 30px;
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: bold;
+      color: #45a049;
+      margin: 0 auto;
+    }
+    
+    .balance-text {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 16px;
+      color: #555;
     }
 
     .notifications {
@@ -137,7 +157,7 @@
     <a href="account.html">View Account Details</a>
     <a href="loan.html">Loan</a>
     <a href="creditcard.html" class="credit-card-option">Credit Card</a>
-    <a href="report.html">Report Issues</a>
+    <a href="reportpage.html">Report Issues</a>
     <a href="transactions.html">Transactions</a>
     <a href="bills.html">Bills</a>
     <a href="Transfers.html">Transfers</a>
@@ -148,14 +168,14 @@
   <main>
     <h1>Home Page</h1>
     <div class="balance">
-      <h2>Current Balance</h2>
-      <p>1,000.00 L.E </p>
+      <p class="balance-text">Balance</p>
+      <p>1,000.00 L.E</p>
     </div>
     <div class="notifications">
       <h2>Notifications</h2>
       <ul>
         <li>New transaction: 50.00 L.E received</li>
-        <li>Important bank wide announcement : automated reminders for loans and credit card bills have been added!</li>
+        <li>Important bank-wide announcement: automated reminders for loans and credit card bills have been added!</li>
       </ul>
     </div>
     <div class="reminders">
@@ -179,7 +199,7 @@
           var username = getParameterByName("username");
 
           if (url === "creditcard.html" && username === "Haya") {
-            window.location.href =url;
+            window.location.href = url;
           } else {
             window.location.href = url;
           }
@@ -187,7 +207,6 @@
       });
     });
 
-  
     function getParameterByName(name) {
       name = name.replace(/[\[\]]/g, "\\$&");
       var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -201,7 +220,6 @@
       alert("You have successfully logged out!");
       window.location.href = "login.html";
     }
-
   </script>
   
 </body>

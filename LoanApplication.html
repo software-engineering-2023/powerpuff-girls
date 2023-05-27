@@ -41,6 +41,12 @@
       cursor: pointer;
     }
 
+    .purpose {
+      resize: none;
+      height: 100px;
+      width: 350px;
+    }
+
     .home-button {
       position: fixed;
       top: 20px;
@@ -56,12 +62,90 @@
       text-align: center;
       cursor: pointer;
     }
+        .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Loan Application</h1>
-
+    <div class="sidebar">
+        <div class="close-button">&times;</div>
+        <a href="account.html">View Account Details</a>
+        <a href="loan.html">Loan</a>
+        <a href="creditcard.html">Credit Card</a>
+        <a href="reportpage.html">Report Issues</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="bills.html">Bills</a>
+        <a href="Transfers.html">Transfers</a>
+        <a href="ViewPoints.html">Points</a>
+        <a href="SetReminders.html">Set Reminder</a>
+      </div>
     <form action="/submit_loan_application" method="post" onsubmit="return redirectToConfirmation()">
       <div class="form-group">
         <label for="amount">Loan Amount:</label>
@@ -79,7 +163,7 @@
 
       <div class="form-group">
         <label for="purpose">Loan Purpose:</label>
-        <textarea id="purpose" name="purpose" rows="4" required></textarea>
+        <textarea class = "purpose" required > Please enter the purpose of the loan.</textarea>
       </div>
 
       <input type="submit" value="Submit Application" class="submit-button">
@@ -87,12 +171,25 @@
   </div>
 
   <a href="mainpage.html" class="home-button">&#8962;</a>
-
+  <div class="toggle-button">&#9776;</div>
   <script>
     function redirectToConfirmation() {
       window.location.replace("LoanSubmitted.html");
       return false; // Prevent form submission
     }
+        const toggleButton = document.querySelector(".toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const closeButton = document.querySelector(".close-button");
+
+    toggleButton.addEventListener("click", () => {
+      toggleButton.style.display = "none";
+      sidebar.classList.add("active");
+    });
+
+    closeButton.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      toggleButton.style.display = "flex";
+    });
   </script>
 </body>
 </html>

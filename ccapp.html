@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HSMS Bank - Credit Card Application</title>
+  <style>
+    /* CSS styles for the credit card application page */
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    .application-container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .application-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+    .form-group button:active {
+      background-color: #3e8940;
+    }
+    .form-group .success-message {
+      color: green;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .footer {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-column {
+      flex: 1 1 200px;
+      margin-bottom: 20px;
+    }
+    .footer-column h4 {
+      margin-bottom: 10px;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-column ul li {
+      margin-bottom: 5px;
+    }
+    .footer-bottom {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      margin: 0;
+    }
+    .social-icons {
+      display: flex;
+      align-items: center;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin-left: 10px;
+      color: #fff;
+      font-size: 20px;
+    }
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
+    .checkmark {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="close-button">&times;</div>
+        <a href="account.html">View Account Details</a>
+        <a href="loan.html">Loan</a>
+        <a href="creditcard.html">Credit Card</a>
+        <a href="reportpage.html">Report Issues</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="bills.html">Bills</a>
+        <a href="Transfers.html">Transfers</a>
+        <a href="ViewPoints.html">Points</a>
+        <a href="SetReminders.html">Set Reminder</a>
+      </div>
+  <div class="application-container">
+    <h2>HSMS Bank - Credit Card Application</h2>
+    <form>
+      <div class="form-group">
+        <label for="nationalId">National ID:</label>
+        <input type="text" id="nationalId" name="nationalId" placeholder="Enter your national ID" required>
+      </div>
+      <div class="form-group">
+        <label for="employerName">Employer Name:</label>
+        <input type="text" id="employerName" name="employerName" placeholder="Enter your employer name" required>
+      </div>
+      <div class="form-group">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter your job title" required>
+      </div>
+      <div class="form-group">
+        <label for="annualIncome">Annual Income:</label>
+        <select id="annualIncome" name="annualIncome" required>
+          <option value="" selected disabled>Select your annual income</option>
+          <option value="less-than-25000">$0 - $24,999</option>
+          <option value="25000-49999">$25,000 - $49,999</option>
+          <option value="50000-99999">$50,000 - $99,999</option>
+          <option value="100000-more">$100,000+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="creditScore">Credit Score:</label>
+        <input type="number" id="creditScore" name="creditScore" placeholder="Enter your credit score" required>
+      </div>
+      <div class="form-group">
+        <button type="button" onclick="submitApplication()">Submit</button>
+        <p id="success-message" class="success-message"></p>
+      </div>
+    </form>
+    </div>
+  <a href="mainpage.html" class="home-button">&#8962;</a>
+  <div class="toggle-button">&#9776;</div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>El Tagamoa El Khames</li>
+          <li>New Cairo City, Egypt</li>
+          <li>Hotline: 12590</li>
+          <li>Email: info@hsmsbank.com</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 HSMS Bank. All rights reserved.</p>
+      <p>Designed by powerpuff girls</p>
+    </div>
+  </footer>
+
+  <script>
+        const toggleButton = document.querySelector(".toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const closeButton = document.querySelector(".close-button");
+
+    toggleButton.addEventListener("click", () => {
+      toggleButton.style.display = "none";
+      sidebar.classList.add("active");
+    });
+
+    closeButton.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      toggleButton.style.display = "flex";
+    });
+
+    function submitApplication() {
+      // Perform validation and submit the application
+      var nationalId = document.getElementById("nationalId").value;
+      var employerName = document.getElementById("employerName").value;
+      var jobTitle = document.getElementById("jobTitle").value;
+
+      if (nationalId.trim() === "" || employerName.trim() === "" || jobTitle.trim() === "") {
+        // Display error message if any field is empty
+        document.getElementById("success-message").innerText = "Please fill in all the fields.";
+      } else {
+        // Display success message and clear the form
+        document.getElementById("success-message").innerHTML =
+          '<img src="checkmark.gif" alt="Checkmark" class="checkmark">' +
+          '<p>Your credit card application has been submitted. Someone will contact you shortly.</p>';
+
+        setTimeout(function() {
+          window.location.href = "mainpage.html";
+        }, 3000);
+
+        document.getElementById("nationalId").value = "";
+        document.getElementById("employerName").value = "";
+        document.getElementById("jobTitle").value = "";
+        document.getElementById("annualIncome").value = "";
+        document.getElementById("creditScore").value = "";
+      }
+    }
+
+  </script>
+</body>
+</html>

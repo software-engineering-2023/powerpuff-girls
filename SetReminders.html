@@ -5,8 +5,17 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
       background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
@@ -61,31 +70,131 @@
       color: #ff0000;
       margin-top: 5px;
     }
+    
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
-  <h1>Bill Reminders</h1>
+  <div class="sidebar">
+    <div class="close-button">&times;</div>
+    <a href="account.html">View Account Details</a>
+    <a href="loan.html">Loan</a>
+    <a href="creditcard.html">Credit Card</a>
+    <a href="reportpage.html">Report Issues</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="bills.html">Bills</a>
+    <a href="Transfers.html">Transfers</a>
+    <a href="ViewPoints.html">Points</a>
+    <a href="SetReminders.html">Set Reminder</a>
+  </div>
+  <div class="container">
+    <h1>Bill Reminders</h1>
 
-  <div id="reminder-form">
-    <h2>Set a Reminder</h2>
-    <div class="form-group">
-      <label for="bill-type">Bill Type:</label>
-      <select id="bill-type">
-        <option value="gas">Gas</option>
-        <option value="electricity">Electricity</option>
-        <option value="water">Water</option>
-        <option value="telephone">Telephone</option>
-      </select>
+    <div id="reminder-form">
+      <h2>Set a Reminder</h2>
+      <div class="form-group">
+        <label for="bill-type">Bill Type:</label>
+        <select id="bill-type">
+          <option value="gas">Gas</option>
+          <option value="electricity">Electricity</option>
+          <option value="water">Water</option>
+          <option value="telephone">Telephone</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="due-date">Due Date:</label>
+        <input type="date" id="due-date">
+        <p class="error-message" id="date-error"></p>
+        <p class="success-message" id="success-message"></p>
+      </div>
+
+      <button onclick="addReminder()">Add Reminder</button>
+      <a href="mainpage.html" class="home-button">&#8962;</a>
     </div>
-
-    <div class="form-group">
-      <label for="due-date">Due Date:</label>
-      <input type="date" id="due-date">
-      <p class="error-message" id="date-error"></p>
-      <p class="success-message" id="success-message"></p>
-    </div>
-
-    <button onclick="addReminder()">Add Reminder</button>
+    <div class="toggle-button">&#9776;</div>
   </div>
 
   <script>
@@ -112,6 +221,19 @@
 
       successMessage.textContent = "Reminder set successfully!";
     }
+    const toggleButton = document.querySelector(".toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const closeButton = document.querySelector(".close-button");
+
+    toggleButton.addEventListener("click", () => {
+      toggleButton.style.display = "none";
+      sidebar.classList.add("active");
+    });
+
+    closeButton.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      toggleButton.style.display = "flex";
+    });
   </script>
 </body>
 </html>

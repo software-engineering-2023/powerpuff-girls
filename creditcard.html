@@ -18,7 +18,7 @@
     }
     
     h1 {
-      color: #2ecc71;
+      color: #45a049;
       text-align: center;
     }
     
@@ -27,7 +27,7 @@
     }
     
     .credit-card {
-      background-color: #2ecc71;
+      background-color: #45a049;
       color: #fff;
       padding: 20px;
       border-radius: 5px;
@@ -41,20 +41,23 @@
     .payment-options {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 20px; /* Add margin at the bottom */
     }
     
     .payment-options button {
-      background-color: #2ecc71;
+      background-color: #45a049;
       color: #fff;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
+      flex-grow: 1; /* Distribute available space equally */
+      margin-right: 10px; /* Add margin between buttons */
     }
     
-    .payment-options button:hover {
-      opacity: 0.8;
+    .payment-options button:last-child {
+      margin-right: 0; /* Remove margin for the last button */
     }
     
     .report-link {
@@ -64,14 +67,99 @@
     }
     
     .report-link a {
-      color: #2ecc71;
+      color: #45a049;
     }
     
     .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .home-button:hover {
+      opacity: 0.8;
+    }
+    
+    .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #2ecc71;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
+
+    .apply-button {
+      background-color: #45a049;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -79,11 +167,70 @@
       cursor: pointer;
       font-size: 16px;
     }
-    
-    .home-button:hover {
+
+    .apply-button:hover {
       opacity: 0.8;
     }
+
+    .file-report-button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .file-report-button:hover {
+    opacity: 0.8;
+  }
+
+  .bills-button {
+    background-color: #45a049;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+  .bills-button:hover {
+    opacity: 0.8;
+  }
   </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="close-button">&times;</div>
+    <a href="account.html">View Account Details</a>
+    <a href="loan.html">Loan</a>
+    <a href="creditcard.html">Credit Card</a>
+    <a href="reportpage.html">Report Issues</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="bills.html">Bills</a>
+    <a href="Transfers.html">Transfers</a>
+    <a href="ViewPoints.html">Points</a>
+    <a href="SetReminders.html">Set Reminder</a>
+  </div>
+  <div class="container">
+    <h1>Credit Card Details</h1>
+    <div class="credit-card">
+      <p>Cardholder Name: John Doe</p>
+      <p>Card Number: **** **** **** 1234</p>
+      <p>Expiration Date: 06/25</p>
+    </div>
+    <div class="payment-options">
+      <button class ="bills-button"onclick="redirectToPayBillPage()">Pay Bills</button>
+      <button class="file-report-button" onclick="redirectToReportPage()">File a Report</button>
+      <button class="apply-button" onclick="redirectToApplyPage()">Apply for Credit Card</button>
+    </div>
+    <div class="report-link">
+      <a href="reportpage.html">Need help? Report Technical Issue Here!</a>
+    </div>
+  </div>
+  <a href="mainpage.html" class="home-button">&#8962;</a>
+  <div class="toggle-button">&#9776;</div>
   <script>
     function redirectToReportPage() {
       window.location.href = "report page.html";
@@ -92,24 +239,28 @@
     function redirectToPayBillPage() {
       window.location.href = "paycreditcardbills.html";
     }
+    
+    function redirectToApplyPage() {
+      window.location.href = "ccapp.html";
+    }
+    
+    function redirectToHome() {
+      window.location.href = "mainpage.html";
+    }
+    
+    const toggleButton = document.querySelector(".toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const closeButton = document.querySelector(".close-button");
+
+    toggleButton.addEventListener("click", () => {
+      toggleButton.style.display = "none";
+      sidebar.classList.add("active");
+    });
+
+    closeButton.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      toggleButton.style.display = "flex";
+    });
   </script>
-</head>
-<body>
-  <div class="container">
-    <a class="home-button" href="mainpage.html">Home</a>
-    <h1>Credit Card Details</h1>
-    <div class="credit-card">
-      <p>Cardholder Name: John Doe</p>
-      <p>Card Number: **** **** **** 1234</p>
-      <p>Expiration Date: 06/25</p>
-    </div>
-    <div class="payment-options">
-      <button onclick="redirectToPayBillPage()">Pay Bills</button>
-      <button onclick="redirectToReportPage()">File a Report</button>
-    </div>
-    <div class="report-link">
-      <a href="#">Need help? Contact customer support</a>
-    </div>
-  </div>
 </body>
 </html>

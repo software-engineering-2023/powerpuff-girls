@@ -32,6 +32,7 @@
     .form-group input[type="date"],
     .form-group input[type="number"],
     .form-group input[type="email"],
+    .form-group input[type="password"],
     .form-group select {
       width: 100%;
       padding: 10px;
@@ -62,8 +63,89 @@
       color: red;
       font-size: 14px;
     }
+    .password-strength-meter {
+      height: 10px;
+      margin-bottom: 10px;
+      background-color: #ddd;
+    }
+    .password-strength-meter span {
+      display: inline-block;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+    .weak {
+      width: 33.33%;
+      background-color: #ff4d4d;
+    }
+    .medium {
+      width: 66.66%;
+      background-color: #ffc04d;
+    }
+    .strong {
+      width: 100%;
+      background-color: #6bff4d;
+    }
   </style>
   <script>
+   function validatePasswordStrength() {
+  var password = document.getElementById("password").value;
+  var passwordStrengthMeter = document.getElementById("password-strength-meter");
+  var passwordStrengthText = document.getElementById("password-strength-text");
+
+  // Reset password strength meter and text
+  passwordStrengthMeter.value = 0;
+  passwordStrengthText.textContent = "";
+
+  // Calculate password strength
+  var strength = 0;
+
+  // Check for at least 8 characters
+  if (password.length >= 8) {
+    strength += 1;
+  }
+
+  // Check for uppercase and lowercase letters
+  if (/[a-z]/.test(password) && /[A-Z]/.test(password)) {
+    strength += 1;
+  }
+
+  // Check for at least one number
+  if (/\d/.test(password)) {
+    strength += 1;
+  }
+
+  // Check for at least one special character
+  if (/[^a-zA-Z0-9]/.test(password)) {
+    strength += 1;
+  }
+
+  // Update password strength meter and text
+  switch (strength) {
+    case 0:
+      passwordStrengthMeter.value = 0;
+      passwordStrengthText.textContent = "";
+      break;
+    case 1:
+      passwordStrengthMeter.value = 25;
+      passwordStrengthText.textContent = "Weak";
+      break;
+    case 2:
+      passwordStrengthMeter.value = 50;
+      passwordStrengthText.textContent = "Moderate";
+      break;
+    case 3:
+      passwordStrengthMeter.value = 75;
+      passwordStrengthText.textContent = "Strong";
+      break;
+    case 4:
+      passwordStrengthMeter.value = 100;
+      passwordStrengthText.textContent = "Very Strong";
+      break;
+    default:
+      break;
+  }
+}
+
     function register() {
       // Get the input values
       var fullName = document.getElementById("fullName").value;
@@ -72,17 +154,25 @@
       var address = document.getElementById("address").value;
       var phoneNumber = document.getElementById("phoneNumber").value;
       var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
 
       var errorMessage = document.getElementById("error-message");
       errorMessage.innerHTML = "";
 
-      if (fullName.trim() === "" || dateOfBirth.trim() === "" || nationalID.trim() === "" || address.trim() === "" || phoneNumber.trim() === "" || email.trim() === "") {
+      if (fullName.trim() === "" || dateOfBirth.trim() === "" || nationalID.trim() === "" || address.trim() === "" || phoneNumber.trim() === "" || email.trim() === "" || password.trim() === "") {
         errorMessage.innerHTML = "Please fill in all fields.";
         return;
       }
 
       if (!email.includes("@")) {
         errorMessage.innerHTML = "Please enter a valid email address.";
+        return;
+      }
+
+      // Password validation
+      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        errorMessage.innerHTML = "Password must contain at least eight characters, including at least one uppercase letter, one lowercase letter, one number, and one special character.";
         return;
       }
 
@@ -94,7 +184,7 @@
 </head>
 <body>
   <div class="registration-container">
-    <h2>Online Banking - Registration</h2>
+    <h2>HSMS Bank - Registration</h2>
     <form>
       <div class="form-group">
         <label for="fullName">Full Name:</label>
@@ -115,11 +205,22 @@
       <div class="form-group">
         <label for="phoneNumber">Phone Number:</label>
         <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
-      </div>
+      </div>       
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Enter your email address" required>
       </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      
+<div class="form-group">
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" placeholder="Enter your password" required oninput="validatePasswordStrength()">
+  <meter id="password-strength-meter" value="0" min="0" max="100"></meter>
+  <div id="password-strength-text"></div>
+</div>
       <div class="form-group">
         <button type="button" onclick="register()">Register</button>
       </div>

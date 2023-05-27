@@ -1,110 +1,218 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>Pay Credit Card Bill</title>
+  <title>Credit Card Payment</title>
   <style>
     body {
-      background-color: #f0f8ea;
+      background-color: #ffffff;
       font-family: Arial, sans-serif;
     }
-  
+
     .container {
       max-width: 500px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      position: relative;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
-  
+
     h1 {
-      color: #008000;
+      color: #45a049;
       text-align: center;
     }
-  
-    label {
-      display: block;
-      margin-bottom: 10px;
-      color: #333;
-    }
-  
-    input[type="radio"] {
-      margin-right: 5px;
-    }
-  
-    .text-input {
-      display: none;
-      margin-top: 5px;
-    }
-  
-    .submit-button {
-      margin-top: 20px;
-      text-align: center;
-    }
-  
-    .message {
-      margin-top: 20px;
-      text-align: center;
-      font-weight: bold;
-      color: #008000;
-    }
-  
+
     .home-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: #008000;
-      text-decoration: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
     }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .radio-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .radio-group label {
+      margin-right: 10px;
+    }
+    .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
+
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <a href="mainpage.html" class="home-button">Home</a>
-    <h1>Pay Credit Card Bill</h1>
-    <form>
-      <label>
-        <input type="radio" name="payment" value="fully" onclick="toggleTextbox(false)" checked> Pay in Full
-      </label>
-      <label>
-        <input type="radio" name="payment" value="partially" onclick="toggleTextbox(true)"> Pay Partially
-      </label>
-      <input type="text" class="text-input" placeholder="Enter partial amount" />
-      <div class="submit-button">
-        <input type="button" value="Submit" onclick="showMessage()">
-      </div>
-    </form>
-    <p class="message" id="message"></p>
+  <div class="sidebar">
+    <div class="close-button">&times;</div>
+    <a href="account.html">View Account Details</a>
+    <a href="loan.html">Loan</a>
+    <a href="creditcard.html">Credit Card</a>
+    <a href="reportpage.html">Report Issues</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="bills.html">Bills</a>
+    <a href="Transfers.html">Transfers</a>
+    <a href="ViewPoints.html">Points</a>
+    <a href="SetReminders.html">Set Reminder</a>
   </div>
 
+  <div class="container">
+    <h1>Credit Card Payment</h1>
+
+    <div class="form-group">
+      <label>Bill Amount Due:</label>
+      <span id="billAmountDue">$500</span>
+    </div>
+
+    <div class="form-group">
+      <label>Interest Rate:</label>
+      <span id="interestRate">15%</span>
+    </div>
+
+    <div class="form-group">
+      <div class="radio-group">
+        <input type="radio" name="paymentOption" id="fullPayment" checked>
+        <label for="fullPayment">Full Payment</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" name="paymentOption" id="partialPayment">
+        <label for="partialPayment">Partial Payment</label>
+      </div>
+    </div>
+
+    <div class="form-group" id="partialPaymentAmount" style="display: none;">
+      <label>Partial Payment Amount:</label>
+      <input type="text" id="amountToPay">
+    </div>
+
+    <div class="form-group">
+      <button class="button">Pay Now</button>
+    </div>
+  </div>
+  <button class="home-button" onclick="redirectToHome()">&#8962;</button>
+  <div class="toggle-button">&#9776;</div>
   <script>
-    function toggleTextbox(show) {
-      var textbox = document.querySelector('.text-input');
-      textbox.style.display = show ? 'block' : 'none';
-    }
+        const toggleButton = document.querySelector(".toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const closeButton = document.querySelector(".close-button");
 
-    function showMessage() {
-      var paymentOption = document.querySelector('input[name="payment"]:checked').value;
-      var amountInput = document.querySelector('.text-input');
-      var amount = amountInput.value;
+    toggleButton.addEventListener("click", () => {
+      toggleButton.style.display = "none";
+      sidebar.classList.add("active");
+    });
 
-      var message = document.getElementById('message');
-      if (paymentOption === "fully") {
-        message.textContent = "Payment of the full amount has been submitted.";
-      } else if (paymentOption === "partially") {
-        if (amount === "") {
-          message.textContent = "Please enter the partial amount.";
-        } else {
-          message.textContent = "Payment of $" + amount + " has been submitted.";
-        }
+    closeButton.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      toggleButton.style.display = "flex";
+    });
+
+    document.getElementById('partialPayment').addEventListener('change', function() {
+      if (this.checked) {
+        document.getElementById('partialPaymentAmount').style.display = 'block';
+      } else {
+        document.getElementById('partialPaymentAmount').style.display = 'none';
       }
+    });
+
+    document.getElementById('fullPayment').addEventListener('change', function() {
+      if (this.checked) {
+        document.getElementById('partialPaymentAmount').style.display = 'none';
+      }
+    });
+    function redirectToHome() {
+      window.location.href = "mainpage.html";
     }
   </script>
 </body>
-
 </html>
