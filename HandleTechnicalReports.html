@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Techical Reports</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      color: #43a047;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+    }
+
+    th {
+      background-color:#43a047;
+      color: #ffffff;
+      text-align: left;
+      padding: 12px;
+    }
+
+    td {
+      border: 1px solid #dddddd;
+      padding: 12px;
+    }
+
+    .button {
+      background-color: #43a047;
+      border: none;
+      color: #ffffff;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color:#43a047;
+    }
+  </style>
+  <script>
+    function deleteRow(row) {
+      var i = row.parentNode.parentNode.rowIndex;
+      document.getElementById("techSupportTable").deleteRow(i);
+    }
+  </script>
+</head>
+<body>
+  <h1>Techical Reports</h1>
+  <table id="techSupportTable">
+    <tr>
+      <th>Name</th>
+      <th>Issue</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Mariam</td>
+      <td>I am not able to pay my bills online</td>
+      <td><button class="button" onclick="deleteRow(this)">Issue Handled</button></td>
+    </tr>
+    <tr>
+      <td>Haya</td>
+      <td>Whenever I try to make fund transfers, it says transaction failed</td>
+      <td><button class="button" onclick="deleteRow(this)">Issue Handled</button></td>
+    </tr>
+    <tr>
+      <td>Sama</td>
+      <td>I can't view my account details</td>
+      <td><button class="button" onclick="deleteRow(this)">Issue Handled</button></td>
+    </tr>
+  </table>
+</body>
+</html>
