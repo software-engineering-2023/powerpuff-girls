@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Card Applications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f9f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #158467;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      background-color: #158467;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #0c6a4a;
+    }
+  </style>
+  <script>
+    function deleteRow(row) {
+      var table = row.parentNode.parentNode;
+      table.deleteRow(row.rowIndex);
+    }
+  </script>
+</head>
+<body>
+  <h1>Credit Card Applications</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>National ID</th>
+        <th>Employer Name</th>
+        <th>Job Title</th>
+        <th>Annual Income</th>
+        <th>Credit Score</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>123456789</td>
+        <td>Vodafone</td>
+        <td>IT Manager</td>
+        <td>$50,000-$99,999</td>
+        <td>750</td>
+        <td>
+          <button class="action-btn" onclick="deleteRow(this.parentNode.parentNode)">Accept</button>
+          <button class="action-btn" onclick="deleteRow(this.parentNode.parentNode)">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <td>987654321</td>
+        <td>Amazon</td>
+        <td>Data Scientist</td>
+        <td>$100,000+</td>
+        <td>820</td>
+        <td>
+          <button class="action-btn" onclick="deleteRow(this.parentNode.parentNode)">Accept</button>
+          <button class="action-btn" onclick="deleteRow(this.parentNode.parentNode)">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
