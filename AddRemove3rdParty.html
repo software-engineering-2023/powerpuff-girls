@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Third Party Applications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e9f8f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #43a047;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #43a047;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fff;
+    }
+
+    .remove-button {
+      background-color: #e53935;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-button {
+      background-color: #43a047;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>Third Party Applications</h1>
+  <table>
+    <tr>
+      <th>Third Party Application Name</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Orange</td>
+      <td><button class="remove-button" onclick="removeRow(this)">Remove</button></td>
+    </tr>
+    <tr>
+      <td>Vodafone</td>
+      <td><button class="remove-button" onclick="removeRow(this)">Remove</button></td>
+    </tr>
+    <tr>
+      <td>Etisalat</td>
+      <td><button class="remove-button" onclick="removeRow(this)">Remove</button></td>
+    </tr>
+    <tr>
+      <td>Fawry</td>
+      <td><button class="remove-button" onclick="removeRow(this)">Remove</button></td>
+    </tr>
+  </table>
+  <button class="add-button" onclick="addVendor()">Add Vendor</button>
+
+  <script>
+    function removeRow(button) {
+      var row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+
+    function addVendor() {
+      var vendorName = prompt("Enter the vendor name:");
+      if (vendorName) {
+        var table = document.querySelector("table");
+        var newRow = table.insertRow(-1);
+        var nameCell = newRow.insertCell(0);
+        nameCell.textContent = vendorName;
+        var actionCell = newRow.insertCell(1);
+        var removeButton = document.createElement("button");
+        removeButton.className = "remove-button";
+        removeButton.textContent = "Remove";
+        removeButton.onclick = function() {
+          removeRow(this);
+        };
+        actionCell.appendChild(removeButton);
+      }
+    }
+
+  </script>
+
+</body>
+</html>
