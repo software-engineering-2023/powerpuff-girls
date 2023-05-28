@@ -6,9 +6,23 @@
     body {
       background-color: #ffffff;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-
+    .content {
+      flex: 1;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      margin-top: auto;
+    }
     .container {
+      height: 400px; /* Set the desired height here */
       max-width: 500px;
       margin: 0 auto;
       padding: 20px;
@@ -28,7 +42,7 @@
       right: 20px;
       width: 60px;
       height: 60px;
-      background-color: #008000;
+      background-color: #45a049;
       color: #ffffff;
       border: none;
       border-radius: 50%;
@@ -131,9 +145,28 @@
       opacity: 1;
     }
 
+    .checkmark {
+      display: none;
+      text-align: center;
+    }
+
+    .checkmark img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+      display: none;
+    }
   </style>
 </head>
 <body>
+  <button class="home-button" onclick="redirectToHome()">&#8962;</button>
+
+  <div class="toggle-button">&#9776;</div>
   <div class="sidebar">
     <div class="close-button">&times;</div>
     <a href="account.html">View Account Details</a>
@@ -177,13 +210,21 @@
     </div>
 
     <div class="form-group">
-      <button class="button">Pay Now</button>
+      <button class="button" onclick="processPayment()">Pay Now</button>
+    </div>
+
+    <div class="checkmark" id="checkmark">
+      <img src="checkmark.gif" alt="Payment Accepted">
+    </div>
+
+    <div class="message" id="message">
+      Payment Accepted
     </div>
   </div>
-  <button class="home-button" onclick="redirectToHome()">&#8962;</button>
-  <div class="toggle-button">&#9776;</div>
+   <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
+ 
   <script>
-        const toggleButton = document.querySelector(".toggle-button");
+    const toggleButton = document.querySelector(".toggle-button");
     const sidebar = document.querySelector(".sidebar");
     const closeButton = document.querySelector(".close-button");
 
@@ -210,8 +251,23 @@
         document.getElementById('partialPaymentAmount').style.display = 'none';
       }
     });
+
     function redirectToHome() {
       window.location.href = "mainpage.html";
+    }
+
+    function processPayment() {
+      const checkmark = document.getElementById("checkmark");
+      const message = document.getElementById("message");
+
+      // Show the checkmark and payment accepted message
+      checkmark.style.display = "block";
+      message.style.display = "block";
+
+      // Redirect to mainpage.html after 3 seconds
+      setTimeout(function() {
+        window.location.href = "mainpage.html";
+      }, 3000);
     }
   </script>
 </body>

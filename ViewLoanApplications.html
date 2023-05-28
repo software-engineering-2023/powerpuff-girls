@@ -3,6 +3,16 @@
 <head>
 <title>Loan Details</title>
 <style>
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
     table {
     width: 100%;
     border-collapse: collapse;
@@ -13,11 +23,27 @@
     border-bottom: 1px solid #ddd;
     }
     th {
-    background-color: green;
+    background-color: #45a049;
     color: white;
     }
     .header-container {
     text-align: center;
+    color: #45a049;
+    }
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
     }
 </style>
 <script>
@@ -28,6 +54,7 @@
 </script>
 </head>
 <body>
+    <a href="BankerHomePage.html" class="home-button">&#8962;</a>
 <div class="header-container">
     <h1>Loan Applications</h1>
 </div>
@@ -61,5 +88,6 @@
     </td>
     </tr>
 </table>
+<p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
 </body>
 </html>

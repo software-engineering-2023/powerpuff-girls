@@ -5,11 +5,26 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
+    header {
+      background-color: #4CAF50;
+      padding: 20px;
       text-align: center;
-      margin-top: 50px;
+      color: #fff;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 150px; /* Adjust the width as needed */
+      height: auto; /* Adjust the height as needed */
+    }
+    .greeting {
+      text-align: center;
+      margin-top: 20px;
       color: #333;
     }
     .button-container {
@@ -17,27 +32,155 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 30px;
+      padding: 20px 0;
     }
-    .button-container a.button {
+    .button-container h2 {
+      text-align: center;
+      color: #333;
+    }
+    .button-container .button-category {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .button-container .button-category h3 {
+      margin: 0;
+      color: #333;
+    }
+    .button-container .button-group {
+      flex: 1;
+      margin: 0 20px;
+    }
+    .button-container .button-group:not(:last-child) {
+      border-right: 1px solid #ccc;
+      padding-right: 20px;
+    }
+    .button-container .button-container {
+      margin-top: 20px;
+    }
+    .button-container .button-group .button-container .button {
       display: inline-block;
       padding: 10px 20px;
-      margin: 10px;
+      margin-top: 10px;
       font-size: 16px;
       text-decoration: none;
       background-color: #4CAF50;
       color: #fff;
       border: none;
       border-radius: 4px;
+      width: 200px; /* Set the desired width */
+    }
+    .button-container .button-group .button-container .button:hover {
+      opacity: 0.8;
+    }
+    .notifications {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      text-align: left;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .notifications h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .notifications ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    .notifications li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .notifications li:before {
+      content: "\2022";
+      color: #4CAF50;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      position: absolute;
+      left: 0;
+    }
+    .logout-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 2;
+    }
+    
+    .logout-btn:hover {
+      background-color: #45a049;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: relative;
+     bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome To HSMS Bank</h1>
+  <header>
+    <img class="logo" src="logo.png" alt="HSMS Bank Logo">
+    <h1>HSMS - Banker Portal</h1>
+  </header>
+
+  <h2 class="greeting">Welcome Back, Mariam Moustafa</h2>
   
   <div class="button-container">
-    <a href="ViewLoanApplications.html" class="button">View Loan Applications</a>
-    <a href="ViewCreditCardApplications.html" class="button">View Credit Card Applications</a>
-    <a href="ReportHandling.html" class="button">View Credit Card Reports</a>
+    <div class="button-group">
+      <div class="button-category">
+        <h3>Applications</h3>
+      </div>
+      <div class="button-container">
+        <a href="ViewLoanApplications.html" class="button">View Loan Applications</a>
+      </div>
+      <div class="button-container">
+        <a href="ViewCreditCardApplications.html" class="button">View Credit Card Applications</a>
+      </div>
+    </div>
+    <div class="button-group">
+      <div class="button-category">
+        <h3>Reports</h3>
+      </div>
+      <div class="button-container">
+        <a href="ReportHandling.html" class="button">View Credit Card Reports</a>
+      </div>
+    </div>
   </div>
+  
+  <div class="notifications">
+    <h2>Notifications</h2>
+    <ul>
+      <li>Bank Announcement: Increased Interest Rates</li>
+      <li>Bank Announcement: Servers down for maintenance on 05-06-2023</li>
+      <li>Payday coming at the end of the week: 02-06-2023</li>
+    </ul>
+  </div>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
+  <script>
+    function logout() {
+      alert("You have successfully logged out!");
+      window.location.href = "login.html";
+    }
+  </script>
 </body>
 </html>
