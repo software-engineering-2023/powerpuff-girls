@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #008000;
+        }
+        
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            width: 80%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        th, td {
+            padding: 10px;
+        }
+        
+        th {
+            background-color: #008000;
+            color: #fff;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .action-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #008000;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .action-btn:hover {
+            background-color: #006400;
+        }
+    </style>
+    <script>
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</head>
+<body>
+    <h1>Account Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>National ID</th>
+                <th>Account Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>123456789</td>
+                <td>Savings</td>
+                <td>
+                    <button class="action-btn" onclick="deleteRow(this)">Open Account</button>
+                    <button class="action-btn" onclick="deleteRow(this)">Reject</button>
+                </td>
+            </tr>
+            <tr>
+                <td>987654321</td>
+                <td>Checking</td>
+                <td>
+                    <button class="action-btn" onclick="deleteRow(this)">Open Account</button>
+                    <button class="action-btn" onclick="deleteRow(this)">Reject</button>
+                </td>
+            </tr>
+            <!-- Add more rows here -->
+        </tbody>
+    </table>
+</body>
+</html>
