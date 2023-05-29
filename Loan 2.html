@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Details</title>
+  <style>
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .outstanding-loans {
+      font-size: 28px;
+      color: #45a049;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .info-label {
+      font-weight: bold;
+    }
+
+    .button {
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .sidebar {
+      background-color: #2E7D32;
+      color: #fff;
+      width: 240px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: -240px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .toggle-button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .close-button {
+      right: 20px;
+      opacity: 1;
+    }
+    /* Existing CSS styles remain the same */
+
+    /* New CSS for the amortization table */
+    .amortization-table {
+      margin-top: 40px;
+      width: 80%;
+      border-collapse: collapse;
+    }
+
+    .amortization-table th,
+    .amortization-table td {
+      padding: 8px;
+      text-align: right;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .amortization-table th {
+      background-color: #f2f2f2;
+    }
+
+    .amortization-table tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="close-button">&times;</div>
+    <a href="account.html">View Account Details</a>
+    <a href="loan.html">Loan</a>
+    <a href="creditcard.html">Credit Card</a>
+    <a href="reportpage.html">Report Issues</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="bills.html">Bills</a>
+    <a href="Transfers.html">Transfers</a>
+    <a href="ViewPoints.html">Points</a>
+    <a href="SetReminders.html">Set Reminder</a>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>HSMS - Loan Details</h1>
+      <div class="outstanding-loans">Outstanding Loans: 450,000 L.E</div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Type of Loan:</span>
+      <span>Car Loan</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Remaining Amount:</span>
+      <span>200,000 L.E</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Next Payment:</span>
+      <span>15-06-2023</span>
+    </div>
+    
+  
+
+    <a href="mainpage.html" class="home-button">&#8962;</a>
+    <div class="toggle-button">&#9776;</div>
+    <button class="button" onclick="location.href='loanapplication.html'">Apply for Loan</button>
+  </div>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
+
+
+    <!-- Loan Amortization Table -->
+    <table class="amortization-table">
+      <tr>
+        <th>Due Date</th>
+        <th>Previous Payments</th>
+        <th>Interest Amount</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>15-06-2022</td>
+        <td>150,000 L.E</td>
+        <td>2,500 L.E</td>
+        <td>Paid</td>
+      </tr>
+      <tr>
+        <td>15-07-2022</td>
+        <td>150,000 L.E</td>
+        <td>2,000 L.E</td>
+        <td>Paid</td>
+      </tr>
+      <tr>
+        <td>15-09-2023</td>
+        <td>150,000 L.E</td>
+        <td>1,500 L.E</td>
+        <td>Not Paid</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+
+    <a href="mainpage.html" class="home-button">&#8962;</a>
+    <div class="toggle-button">&#9776;</div>
+    <button class="button" onclick="location.href='loanapplication
