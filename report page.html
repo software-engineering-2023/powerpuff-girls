@@ -3,6 +3,16 @@
 <head>
   <title>Report Page</title>
   <style>
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
@@ -180,6 +190,7 @@
 
  <a href="mainpage.html" class="home-button">&#8962;</a>
  <div class="toggle-button">&#9776;</div>
+ <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
   <script>
     document.getElementById('reportForm').addEventListener('submit', function(event) {
       event.preventDefault();
