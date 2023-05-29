@@ -200,8 +200,6 @@
     <div class="reminders">
       <h2>Reminders</h2>
       <ul>
-        <li class="due">Loan Payment, Due - 05-06-2023</li>
-        <li class="due">Credit Card Bill Payment, Due - 01-06-2023</li>
       </ul>
     </div>
   </main>
@@ -249,8 +247,8 @@
   if (storedBalance) {
     balanceElement.innerText = storedBalance + " L.E";
   } else {
-    balanceElement.innerText = "10000 L.E";
-    localStorage.setItem("balance", "10000.00");
+    balanceElement.innerText = "500000 L.E";
+    localStorage.setItem("balance", "500000");
   }
 
   var remindersSection = document.querySelector(".reminders ul");
@@ -270,11 +268,19 @@
     remindersSection.appendChild(listItem);
   }
 
+
   // Add existing reminders to the reminders section
   reminders.forEach(function(reminder) {
     addReminderToList(reminder.billType, reminder.dueDate);
   });
-
+  var listItem = document.createElement("li");
+    listItem.textContent = "Loan Payment Due," + " - " + "15-06-2022";
+    listItem.classList.add("due");
+    remindersSection.appendChild(listItem);
+    var listItem = document.createElement("li");
+    listItem.textContent = "Credit Card Bill Due," + " - " + "02-06-2022";
+    listItem.classList.add("due");
+    remindersSection.appendChild(listItem);
   // Function to format the date as dd-mm-yyyy
   function formatDate(dateString) {
     var dateParts = dateString.split("-");

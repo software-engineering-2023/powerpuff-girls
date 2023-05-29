@@ -3,6 +3,16 @@
 <head>
   <title>Account Details</title>
   <style>
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
     body {
       background-color: #ffffff;
       font-family: Arial, sans-serif;
@@ -157,15 +167,13 @@
 
     <div class="form-group">
       <label>Name:</label>
-      <span id="userName">John Doe</span>
+      <span id="userName">Malak Zakaria</span>
     </div>
 
     <div class="form-group">
       <label>Account Type:</label>
       <span id="accountType">Savings</span>
     </div>
-
-    <!-- Add more account details here -->
 
     <div class="close-account-button">
       <button class="button" onclick="confirmCloseAccount()">Close Account</button>
@@ -174,7 +182,7 @@
     <a href="mainpage.html" class="home-button">&#8962;</a>
   </div>
   <div class="toggle-button">&#9776;</div>
-
+<p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
   <script>
  function confirmCloseAccount() {
       var confirmation = confirm("Are you sure you want to close your account? This action is irreversible.");
