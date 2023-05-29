@@ -3,6 +3,16 @@
 <head>
   <title>Techical Reports</title>
   <style>
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
@@ -48,6 +58,24 @@
     .button:hover {
       background-color:#43a047;
     }
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #008000;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .home-button:hover{
+      opacity: o.7;
+    }
   </style>
   <script>
     function deleteRow(row) {
@@ -80,5 +108,7 @@
       <td><button class="button" onclick="deleteRow(this)">Issue Handled</button></td>
     </tr>
   </table>
+  <a href="SystemAdminHomePage.html" class="home-button">&#8962;</a>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
 </body>
 </html>
