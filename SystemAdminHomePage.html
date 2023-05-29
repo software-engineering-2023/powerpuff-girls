@@ -8,43 +8,134 @@
       background-color: #f1f1f1;
       margin: 0;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     h1 {
-      color: #333;
+      color: #fff;
       text-align: center;
       margin-top: 0;
+      background-color: #4CAF50;
+      padding: 20px;
     }
 
     .button-container {
       display: flex;
       justify-content: center;
       margin-top: 30px;
+      flex-wrap: wrap;
     }
 
     .button {
       display: inline-block;
       padding: 10px 20px;
-      margin: 0 10px;
+      margin: 10px;
       background-color: #4CAF50;
       color: #fff;
       text-align: center;
       text-decoration: none;
       border-radius: 4px;
       transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     .button:hover {
       background-color: #45a049;
     }
+    
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+    }
+
+    .logo-image {
+      width: 150px;
+    }
+
+    .footer {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .welcome-text {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 40px;
+    }
+
+    .additional-info {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .additional-info p {
+      margin-bottom: 10px;
+    }
+    strong{
+      color: #45a049;
+    }
+    .logout-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 2;
+    }
+    
+    .logout-btn:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-image">
+  </div>
+  
   <h1>Welcome to HSMS Bank</h1>
+  
+  <div class="welcome-text">
+    Welcome Back, Admin
+  </div>
+  
   <div class="button-container">
     <a href="SendBankAnnouncements.html" class="button">Send a Bank Announcement</a>
     <a href="AddRemove3rdParty.html" class="button">View Third Party Applications</a>
     <a href="HandleTechnicalReports.html" class="button">Handle Technical Reports</a>
   </div>
+  
+  <div class="additional-info">
+    <p><strong>Server Status:</strong> Online</p>
+    <p><strong>User Statistics:</strong> Total Users - 10,000</p>
+    <p><strong>Recent Transactions:</strong> 1,234 transactions processed in the last 24 hours</p>
+    <p><strong>Security Alerts:</strong> No recent security alerts</p>
+  </div>
+  
+  <div class="footer">
+    &copy; 2023 HSMS Bank. All rights reserved.
+  </div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+<script>
+      function logout() {
+      alert("You have successfully logged out!");
+      window.location.href = "login.html";
+    }
+</script>
 </body>
 </html>
