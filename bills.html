@@ -123,6 +123,16 @@
       right: 20px;
       opacity: 1;
     }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -143,10 +153,10 @@
     <form>
       <label for="bill-type">Bill Type:</label>
       <select id="bill-type">
-        <option value="gas">Gas</option>
-        <option value="water">Water</option>
-        <option value="electricity">Electricity</option>
-        <option value="telephone">Telephone</option>
+        <option value="Gas">Gas</option>
+        <option value="Water">Water</option>
+        <option value="Electricity">Electricity</option>
+        <option value="Telephone">Telephone</option>
       </select>
 
       <label for="bill-number">Bill Number:</label>
@@ -154,11 +164,11 @@
 
       <label for="through">Through:</label>
       <select id="through">
-        <option value="bank">Bank</option>
-        <option value="orange">Orange</option>
-        <option value="vodafone">Vodafone</option>
-        <option value="etisalat">Etisalat</option>
-        <option value="fawary">Fawary</option>
+        <option value="Bank">Bank</option>
+        <option value="Orange">Orange</option>
+        <option value="Vodafone">Vodafone</option>
+        <option value="Etisalat">Etisalat</option>
+        <option value="Fawry">Fawry</option>
       </select>
     </form>
 
@@ -167,8 +177,9 @@
 
   <button class="home-button" onclick="redirectToHome()">&#8962;</button>
   <div class="toggle-button">&#9776;</div>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
   <script>
-    function payBill() {
+      function payBill() {
       var billNumberInput = document.getElementById("bill-number");
       var billNumber = billNumberInput.value.trim();
 
@@ -177,11 +188,41 @@
         return;
       }
 
+      var billTypeSelect = document.getElementById("bill-type");
+      var billType = billTypeSelect.value;
+
+      var throughSelect = document.getElementById("through");
+      var through = throughSelect.value;
+
+      var amount = Math.floor(Math.random() * 251) + 50; // Set the amount of the bill payment here
+
       // You can add code here to process the bill payment or perform other actions
+      // Example code to update balance and save transaction
+      var currentBalance = parseFloat(localStorage.getItem("balance")) || 0;
+
+      if (through === "Bank") {
+        var updatedBalance = currentBalance - amount;
+        localStorage.setItem("balance", updatedBalance);
+
+        var savedTransactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+        var transaction = {
+          amount: amount,
+          location: "Bank",
+          date: "31-05-2023",
+          purpose: billType + " Bill Payment"
+        };
+
+        savedTransactions.unshift(transaction);
+        localStorage.setItem("transactions", JSON.stringify(savedTransactions));
+      }
+
       alert("Bill payment successful! Bill Number: " + billNumber); // Example alert for demonstration purposes
 
-      // Clear the input field
+      // Clear the input fields
       billNumberInput.value = "";
+      billTypeSelect.value = "";
+      throughSelect.value = "";
     }
 
     function redirectToHome() {

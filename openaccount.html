@@ -5,7 +5,7 @@
   <style>
     /* CSS styles for the open account page */
     body {
-      background-color: #f2f2f2;
+      background-color: #fff;
       font-family: Arial, sans-serif;
     }
     .open-account-container {
@@ -63,24 +63,57 @@
       font-weight: bold;
       font-size: 18px;
     }
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #45a049;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+     bottom: 0;
+      width: 100%;
+    }
+    .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo-image {
+  width: 200px; /* Adjust the width as needed */
+}
   </style>
   <script>
     function openAccount() {
-      // Generate a random account number
-      var accountNumber = Math.floor(Math.random() * 1000000000) + 1000000000;
 
-      // Display the account details
       var accountDetails = document.getElementById("account-details");
-      accountDetails.innerHTML = "<p>Account Number: " + accountNumber + "</p><p>Account Opened!</p>";
-      var username = "Haya";
+      accountDetails.innerHTML = "Your request to open an account is pending<p>You will be sent an e-mail once your account is opened!</p>";
       setTimeout(function() {
         // Redirect to another page after the delay
-        window.location.href = "mainpage.html?username=" + encodeURIComponent(username);
-      }, 5000); 
+        window.location.href = "waitforaccount.html" ;
+      }, 3000); 
     }
   </script>
 </head>
 <body>
+  <div class="logo">
+    <img src="logo.jpeg" alt="Logo" class="logo-image">
+  </div>
   <div class="open-account-container">
     <h2>Online Banking - Open Account</h2>
     <form>
@@ -97,5 +130,8 @@
     </form>
     <div class="account-details" id="account-details"></div>
   </div>
+  <a href="noaccount.html" class="home-button">&#8962;</a>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
+
 </body>
 </html>
