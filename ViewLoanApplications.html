@@ -13,19 +13,40 @@
      bottom: 0;
       width: 100%;
     }
+    h1 {
+      text-align: center;
+      color: #45a049;
+    }
+
     table {
-    width: 100%;
-    border-collapse: collapse;
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
     }
+
     th, td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
     }
+
     th {
-    background-color: #45a049;
-    color: white;
+      background-color: #f2f2f2;
+      color: #333;
     }
+    .action-btn {
+      padding: 6px 12px;
+      background-color: #45a049;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background-color: #4CAF50;
+    }
+
     .header-container {
     text-align: center;
     color: #45a049;
@@ -73,8 +94,8 @@
     <td>Personal Loan</td>
     <td>Debt Consolidation</td>
     <td>
-        <button onclick="deleteRow(this)">Accept</button>
-        <button onclick="deleteRow(this)">Reject</button>
+        <button class = "action-btn" onclick="deleteRow(this)">Accept</button>
+        <button class = "action-btn" onclick="deleteRow(this)">Reject</button>
     </td>
     </tr>
     <tr>
@@ -83,8 +104,8 @@
     <td>Car Loan</td>
     <td>Car Purchase</td>
     <td>
-        <button onclick="deleteRow(this)">Accept</button>
-        <button onclick="deleteRow(this)">Reject</button>
+        <button class = "action-btn" onclick="deleteRow(this)">Accept</button>
+        <button class = "action-btn" onclick="deleteRow(this)">Reject</button>
     </td>
     </tr>
 </table>

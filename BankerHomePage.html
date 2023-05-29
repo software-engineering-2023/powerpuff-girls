@@ -176,9 +176,6 @@
   <div class="notifications">
     <h2>Notifications</h2>
     <ul>
-      <li>Bank Announcement: Increased Interest Rates</li>
-      <li>Bank Announcement: Servers down for maintenance on 05-06-2023</li>
-      <li>Payday coming at the end of the week: 02-06-2023</li>
     </ul>
   </div>
 
@@ -189,6 +186,23 @@
       alert("You have successfully logged out!");
       window.location.href = "login.html";
     }
+    function populateNotifications() {
+    var storedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
+
+    var notificationsList = document.querySelector(".notifications ul");
+
+    storedAnnouncements.forEach(function (announcement) {
+     var listItem = document.createElement("li");
+      listItem.textContent = announcement.announcement;
+      notificationsList.appendChild(listItem);
+   });
+   var listItem = document.createElement("li");
+    listItem.textContent = "Payday soon, 02-06-2023";
+    notificationsList.appendChild(listItem);
+  }
+
+populateNotifications();
+
   </script>
 </body>
 </html>

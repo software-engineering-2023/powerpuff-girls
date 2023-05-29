@@ -132,6 +132,33 @@
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script>
+    var account ="false";
+    if (localStorage.getItem("newaccount") === "waiting"){
+      account ="waiting"
+    }
+    else if (localStorage.getItem("newaccount") === "opened"){
+      account ="opened"
+    }
+    var announcements = [];
+    if(localStorage.getItem("announcements")){ 
+      announcements = JSON.parse(localStorage.getItem("announcements"));
+    }else{
+    announcements = [
+    { announcement: "Bank Announcement: Increased Interest Rates" },
+    { announcement: "Bank Announcement: Servers down for maintenance on 05-06-2023" }
+    ];
+    }
+
+
+  for (var key in localStorage) {
+    if (localStorage.hasOwnProperty(key) && key !== "announcements") {
+      localStorage.removeItem(key);
+    }
+  }
+localStorage.setItem("announcements", JSON.stringify(announcements));
+
+    var transactions = [];
+    localStorage.setItem("transactions", JSON.stringify(transactions));
     function login() {
       // Get the input values
       var username = document.getElementById("username").value;
@@ -143,17 +170,20 @@
         document.getElementById("error-message").innerText = "Username and password are required.";
       } else {
         // Perform login authentication here
-        if (username.trim() === "Haya" || password.trim() === "Haya1234") {
-          // Redirect to main page with the username as a query parameter
+        if (username.trim() === "Sue" && password.trim() === "Sue1234" && account === "false") {
           window.location.href = "noaccount.html?username=" + encodeURIComponent(username);
-        } else if (username.trim() === "Mosta" || password.trim() === "Mosta1234") {
-          // Redirect to main page with the username as a query parameter
-          window.location.href = "BankerMainPage.html?username=" + encodeURIComponent(username);
-        } else if (username.trim() === "Ziko" || password.trim() === "Ziko1234") {
-          // Redirect to main page with the username as a query parameter
+        }  else if (username.trim() === "Sue" && password.trim() === "Sue1234" && account === "waiting") {
+          window.location.href = "waitforaccount.html?username=" + encodeURIComponent(username);
+        } else if (username.trim() === "Sue" && password.trim() === "Sue1234" && account === "opened") {
+          window.location.href = "mainpage.html?username=" + encodeURIComponent(username);
+        }else if (username.trim() === "Mosta" && password.trim() === "Mosta1234") {
+          window.location.href = "BankerHomePage.html?username=" + encodeURIComponent(username);
+        } else if (username.trim() === "Ziko" && password.trim() === "Ziko1234") {
           window.location.href = "mainPage.html?username=" + encodeURIComponent(username);
+        } else if (username.trim() === "Ozz" && password.trim() === "Ozz1234") {
+          window.location.href = "SystemAdminHomePage.html?username=" + encodeURIComponent(username);
         } else {
-          document.getElementById("error-message").innerText = "This username does not exist.";
+          document.getElementById("error-message").innerText = "Invalid username or password.";
         }
       }
     }
