@@ -7,6 +7,19 @@
     body {
       background-color: #f2f2f2;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
     }
     .application-container {
       width: 600px;
@@ -203,33 +216,7 @@
     </div>
   <a href="mainpage.html" class="home-button">&#8962;</a>
   <div class="toggle-button">&#9776;</div>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-column">
-        <h4>Contact Us</h4>
-        <ul>
-          <li>El Tagamoa El Khames</li>
-          <li>New Cairo City, Egypt</li>
-          <li>Hotline: 12590</li>
-          <li>Email: info@hsmsbank.com</li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2023 HSMS Bank. All rights reserved.</p>
-      <p>Designed by powerpuff girls</p>
-    </div>
-  </footer>
-
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
   <script>
         const toggleButton = document.querySelector(".toggle-button");
     const sidebar = document.querySelector(".sidebar");

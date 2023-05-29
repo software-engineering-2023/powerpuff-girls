@@ -6,8 +6,29 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+    .content {
+      flex: 1;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+    }
+    .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 
+.logo-image {
+  width: 200px; /* Adjust the width as needed */
+}
     header {
       background-color: #4CAF50;
       padding: 20px;
@@ -30,7 +51,7 @@
     }
 
     nav a:hover {
-      color: #e1e1e1;
+      color: #e1e1e180;
     }
 
     main {
@@ -169,26 +190,27 @@
     <h1>Home Page</h1>
     <div class="balance">
       <p class="balance-text">Balance</p>
-      <p>1,000.00 L.E</p>
+      <p id="balance-value">Loading...</p>
     </div>
     <div class="notifications">
       <h2>Notifications</h2>
       <ul>
-        <li>New transaction: 50.00 L.E received</li>
-        <li>Important bank-wide announcement: automated reminders for loans and credit card bills have been added!</li>
       </ul>
     </div>
     <div class="reminders">
       <h2>Reminders</h2>
       <ul>
-        <li class="due">Loan payment due soon - 01-06-2023</li>
-        <li class="due">Credit card bill payment due soon - 30-05-2023</li>
+        <li class="due">Loan Payment, Due - 05-06-2023</li>
+        <li class="due">Credit Card Bill Payment, Due - 01-06-2023</li>
       </ul>
     </div>
   </main>
   
   <button class="logout-btn" onclick="logout()">Logout</button>
-
+  <div class="logo">
+    <img src="logo.png" alt="Logo" class="logo-image">
+  </div>
+  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var navLinks = document.querySelectorAll("nav a");
@@ -220,6 +242,77 @@
       alert("You have successfully logged out!");
       window.location.href = "login.html";
     }
+    document.addEventListener("DOMContentLoaded", function() {
+  var balanceElement = document.getElementById("balance-value");
+  var storedBalance = localStorage.getItem("balance");
+
+  if (storedBalance) {
+    balanceElement.innerText = storedBalance + " L.E";
+  } else {
+    balanceElement.innerText = "10000 L.E";
+    localStorage.setItem("balance", "10000.00");
+  }
+
+  var remindersSection = document.querySelector(".reminders ul");
+  var reminders = [];
+
+  // Load reminders from localStorage on page load
+  var storedReminders = localStorage.getItem("reminders");
+  if (storedReminders) {
+    reminders = JSON.parse(storedReminders);
+  }
+
+  // Function to create a reminder list item and append it to the reminders section
+  function addReminderToList(billType, dueDate) {
+    var listItem = document.createElement("li");
+    listItem.textContent = billType + " - " + formatDate(dueDate);
+    listItem.classList.add("due");
+    remindersSection.appendChild(listItem);
+  }
+
+  // Add existing reminders to the reminders section
+  reminders.forEach(function(reminder) {
+    addReminderToList(reminder.billType, reminder.dueDate);
+  });
+
+  // Function to format the date as dd-mm-yyyy
+  function formatDate(dateString) {
+    var dateParts = dateString.split("-");
+    var day = dateParts[2];
+    var month = dateParts[1];
+    var year = dateParts[0];
+    return day + "-" + month + "-" + year;
+  }
+
+  if(localStorage.getItem("transactions") === "[]"){
+    var existingTransactions = [
+    { amount: "100", location: "elmenus", date: "28-05-2023", purpose: "Purchase" },
+    { amount: "200", location: "Amazon", date: "17-05-2023", purpose: "Online Shopping" },
+    { amount: "50", location: "Starbucks", date: "30-04-2023", purpose: "Purchase" }
+  ];
+  localStorage.setItem("transactions", JSON.stringify(existingTransactions));
+  }
+
+  function populateNotifications() {
+  var storedAnnouncements = JSON.parse(localStorage.getItem("announcements")) || [];
+
+  var notificationsList = document.querySelector(".notifications ul");
+
+  storedAnnouncements.forEach(function (announcement) {
+    var listItem = document.createElement("li");
+    listItem.textContent = announcement.announcement;
+    notificationsList.appendChild(listItem);
+  });
+  var listItem = document.createElement("li");
+    listItem.textContent = "50 L.E Receieved";
+    notificationsList.appendChild(listItem);
+
+
+}
+populateNotifications();  
+  
+});
+
   </script>
   
 </body>

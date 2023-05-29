@@ -6,8 +6,20 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    
+    .content {
+      flex: 1;
+    }
+    .bottom-text {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px 0;
+      font-size: 14px;
+      text-align: center;
+    }
     .container {
       max-width: 400px;
       margin: 50px auto;
@@ -45,7 +57,6 @@
     }
     
     .payment-options button {
-      background-color: #45a049;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -173,7 +184,7 @@
     }
 
     .file-report-button {
-    background-color: red;
+    background-color: rgb(153, 8, 8);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -198,69 +209,123 @@
   .bills-button:hover {
     opacity: 0.8;
   }
+
+  .transactions-container {
+    margin-top: 20px;
+  }
+
+  .transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .transaction-interest {
+    color: red;
+  }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <div class="close-button">&times;</div>
-    <a href="account.html">View Account Details</a>
-    <a href="loan.html">Loan</a>
-    <a href="creditcard.html">Credit Card</a>
-    <a href="reportpage.html">Report Issues</a>
-    <a href="transactions.html">Transactions</a>
-    <a href="bills.html">Bills</a>
-    <a href="Transfers.html">Transfers</a>
-    <a href="ViewPoints.html">Points</a>
-    <a href="SetReminders.html">Set Reminder</a>
+  <div class="close-button">&times;</div>
+  <a href="account.html">View Account Details</a>
+  <a href="loan.html">Loan</a>
+  <a href="creditcard.html">Credit Card</a>
+  <a href="reportpage.html">Report Issues</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="bills.html">Bills</a>
+  <a href="Transfers.html">Transfers</a>
+  <a href="ViewPoints.html">Points</a>
+  <a href="SetReminders.html">Set Reminder</a>
+</div>
+<div class="container">
+  <h1>Credit Card Details</h1>
+  <div class="credit-card">
+    <p>Cardholder Name: John Doe</p>
+    <p>Card Number: **** **** **** 1234</p>
+    <p>Expiration Date: 06/25</p>
   </div>
-  <div class="container">
-    <h1>Credit Card Details</h1>
-    <div class="credit-card">
-      <p>Cardholder Name: John Doe</p>
-      <p>Card Number: **** **** **** 1234</p>
-      <p>Expiration Date: 06/25</p>
-    </div>
-    <div class="payment-options">
-      <button class ="bills-button"onclick="redirectToPayBillPage()">Pay Bills</button>
-      <button class="file-report-button" onclick="redirectToReportPage()">File a Report</button>
-      <button class="apply-button" onclick="redirectToApplyPage()">Apply for Credit Card</button>
-    </div>
-    <div class="report-link">
-      <a href="reportpage.html">Need help? Report Technical Issue Here!</a>
-    </div>
+  <div class="payment-options">
+    <button class ="bills-button" onclick="redirectToPayBillPage()">Pay Bills</button>
+    <button class="file-report-button" onclick="redirectToReportPage()">File a Report</button>
+    <button class="apply-button" onclick="redirectToApplyPage()">Apply for Credit Card</button>
   </div>
-  <a href="mainpage.html" class="home-button">&#8962;</a>
-  <div class="toggle-button">&#9776;</div>
-  <script>
-    function redirectToReportPage() {
-      window.location.href = "report page.html";
-    }
+  <div class="report-link">
+    <a href="reportpage.html">Need help? Report Technical Issue Here!</a>
+  </div>
+  <div class="transactions-container">
+    <h2>Transactions</h2>
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount (L.E)</th>
+          <th>Location</th>
+          <th>Interest on Payment (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>23-05-2023</td>
+          <td>100</td>
+          <td>Coffee Shop</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>16-05-2023</td>
+          <td>50</td>
+          <td>Grocery Store</td>
+          <td>1.5</td>
+        </tr>
+        <tr>
+          <td>10-05-2023</td>
+          <td>200</td>
+          <td>Restaurant</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a href="mainpage.html" class="home-button">&#8962;</a>
+<div class="toggle-button">&#9776;</div>
+<p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p>
+<script>
+  function redirectToReportPage() {
+    window.location.href = "reportpage.html";
+  }
 
-    function redirectToPayBillPage() {
-      window.location.href = "paycreditcardbills.html";
-    }
-    
-    function redirectToApplyPage() {
-      window.location.href = "ccapp.html";
-    }
-    
-    function redirectToHome() {
-      window.location.href = "mainpage.html";
-    }
-    
-    const toggleButton = document.querySelector(".toggle-button");
-    const sidebar = document.querySelector(".sidebar");
-    const closeButton = document.querySelector(".close-button");
+  function redirectToPayBillPage() {
+    window.location.href = "paycreditcardbills.html";
+  }
+  
+  function redirectToApplyPage() {
+    window.location.href = "ccapp.html";
+  }
+  
+  function redirectToHome() {
+    window.location.href = "mainpage.html";
+  }
+  
+  const toggleButton = document.querySelector(".toggle-button");
+  const sidebar = document.querySelector(".sidebar");
+  const closeButton = document.querySelector(".close-button");
 
-    toggleButton.addEventListener("click", () => {
-      toggleButton.style.display = "none";
-      sidebar.classList.add("active");
-    });
+  toggleButton.addEventListener("click", () => {
+    toggleButton.style.display = "none";
+    sidebar.classList.add("active");
+  });
 
-    closeButton.addEventListener("click", () => {
-      sidebar.classList.remove("active");
-      toggleButton.style.display = "flex";
-    });
-  </script>
+  closeButton.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    toggleButton.style.display = "flex";
+  });
+</script>
 </body>
 </html>
