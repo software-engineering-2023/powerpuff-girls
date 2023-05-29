@@ -51,6 +51,7 @@
       border-radius: 5px;
       cursor: pointer;
       margin-top: 20px;
+      margin-right: 30px;
     }
 
     .home-button {
@@ -162,7 +163,7 @@
       font-size: 14px;
       text-align: center;
       position: absolute;
-     bottom: 0;
+      bottom: 0;
       width: 100%;
     }
 
@@ -207,53 +208,49 @@
     <table class="amortization-table">
       <tr>
         <th>Due Date</th>
-        <th>Previous Payments</th>
-        <th>Interest Amount</th>
+        <th>Previous Payments (L.E)</th>
+        <th>Interest Amount (L.E)</th>
         <th>Status</th>
       </tr>
       <tr>
         <td>15-04-2022</td>
-        <td>150,000 L.E</td>
-        <td>1,500 L.E</td>
+        <td>150,000</td>
+        <td>1,500</td>
         <td>Paid</td>
       </tr>
       <tr>
         <td>15-05-2022</td>
-        <td>150,000 L.E</td>
-        <td>1,500 L.E</td>
+        <td>150,000</td>
+        <td>1,500</td>
         <td>Paid</td>
       </tr>
       <tr>
         <td>15-06-2023</td>
-        <td>150,000 L.E</td>
-        <td>1,500 L.E</td>
+        <td>150,000</td>
+        <td>1,500</td>
         <td>Not Paid</td>
       </tr>
       <tr>
         <td>15-07-2023</td>
-        <td>150,000 L.E</td>
-        <td>1,500 L.E</td>
+        <td>0</td>
+        <td>1,500</td>
         <td>Not Paid</td>
       </tr>
     </table>
-    <div class="toggle-button">&#9776;</div>
-    <button class="button" onclick="location.href='loanapplication.html'">Apply for Loan</button>
+    <a class="button" href="loanapplication.html">Apply for Loan</a>
   </div>
-  <a href="mainpage.html" class="home-button">&#8962;</a>
-  <p class="bottom-text">&copy; 2023 HSMS Bank. All rights reserved.</p> 
+  <div class="toggle-button">&#9776;</div>
   <script>
-    const toggleButton = document.querySelector(".toggle-button");
-    const sidebar = document.querySelector(".sidebar");
-    const closeButton = document.querySelector(".close-button");
+    const sidebar = document.querySelector('.sidebar');
+    const toggleButton = document.querySelector('.toggle-button');
+    const closeButton = document.querySelector('.close-button');
 
-    toggleButton.addEventListener("click", () => {
-      toggleButton.style.display = "none";
-      sidebar.classList.add("active");
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.add('active');
     });
 
-    closeButton.addEventListener("click", () => {
-      sidebar.classList.remove("active");
-      toggleButton.style.display = "flex";
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.remove('active');
     });
   </script>
 </body>
